@@ -326,13 +326,13 @@
       }
       @media (max-width: 860px) { .skill-groups { grid-template-columns: 1fr; gap: 22px; } }
 
-      /* tool screenshots — one at a time, full width, shown whole (never cropped or zoomed in) */
-      .tool-shots { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 14px; }
+      /* tool screenshots — shown at the same size as the 2nd & 3rd video thumbnails:
+         two per row in a half-width grid, whole image (never cropped) */
+      .tool-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 14px; align-items: start; }
       .tool-shots figure { margin: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg-soft); }
       .tool-shots img { width: 100%; height: auto; }
       .tool-shots figcaption { font-size: 13px; font-weight: 600; color: var(--muted); padding: 9px 12px 10px; line-height: 1.4; }
-      /* very tall screenshots sit slightly zoomed out and centred, so the whole screen fits comfortably */
-      .tool-shots figure.tall { width: 100%; max-width: 780px; margin-left: auto; margin-right: auto; }
+      @media (max-width: 720px) { .tool-shots { grid-template-columns: 1fr; } }
 
       /* certifications */
       .cert-groups { display: grid; gap: 34px; }
