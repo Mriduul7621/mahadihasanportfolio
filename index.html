@@ -350,12 +350,52 @@
 
       .reveal { opacity: 1; }
     </style>
-  </head>
+  
+<style>
+/* ===== NAVY & GOLD REDESIGN PREVIEW — adopted from the design/navy-gold-mh-portfolio sample ===== */
+:root{ --navy:#071a36; --navy-2:#0b2850; --gold:#b38324; --gold-bright:#e8b94f; }
+.topnav{ background:rgba(7,26,54,.97); backdrop-filter:blur(14px); border-bottom:1px solid rgba(232,185,79,.35); }
+.topnav .who{ color:#fff; display:inline-flex; align-items:center; gap:12px; padding:6px 0; }
+.topnav .who .monogram{ width:42px; height:42px; flex:none; border:1.5px solid #e8b94f; border-radius:12px; display:grid; place-items:center; color:#e8b94f; font-family:"Source Serif 4",Georgia,serif; font-size:18px; font-weight:700; letter-spacing:-1px; box-shadow:inset 0 0 14px rgba(232,185,79,.14); }
+.topnav .who .who-text{ display:flex; flex-direction:column; line-height:1.15; color:#fff; }
+.topnav .who .who-text small{ font-size:9.5px; letter-spacing:1.6px; text-transform:uppercase; color:#bdc8d8; font-weight:600; margin-top:2px; }
+.navlinks a{ color:#d7deea; }
+.navlinks a:hover{ background:rgba(255,255,255,.08); color:#e8b94f; }
+@media (max-width:520px){ .topnav .who .who-text small{ display:none; } }
+.hero{ position:relative; background:radial-gradient(ellipse at 85% 15%, #17416d 0%, transparent 42%), linear-gradient(125deg,#06152e,#09264b 62%,#071a36); border-bottom:none; color:#fff; }
+.hero::before{ content:""; position:absolute; width:480px; height:480px; border:1px solid rgba(232,185,79,.16); border-radius:50%; right:-180px; top:-250px; box-shadow:0 0 0 42px rgba(232,185,79,.035), 0 0 0 90px rgba(232,185,79,.02); pointer-events:none; }
+.hero .wrap{ position:relative; }
+.hero h1{ color:#fff; }
+.hero-role{ background:rgba(255,255,255,.06); border-color:rgba(232,185,79,.45); color:#e8b94f; }
+.hero-headline{ color:#dbe6f3; } .hero-headline strong{ color:#fff; }
+.hero-sub{ color:#aebed2; }
+.hero .btn-primary{ background:#e8b94f; color:#10213a; box-shadow:0 8px 26px rgba(232,185,79,.22); }
+.hero .btn-primary:hover{ background:#f6d98e; }
+.hero .btn-ghost{ background:transparent; border-color:rgba(255,255,255,.4); color:#fff; }
+.hero .btn-ghost:hover{ border-color:#e8b94f; color:#e8b94f; }
+.hero-meta{ color:#aebed2; }
+.hero .social-link{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.25); color:#fff; }
+.hero .social-link:hover{ border-color:#e8b94f; }
+.impact{ background:#ffffff; color:#14232e; border-bottom:1px solid #dde5ee; }
+.impact .stat .num{ color:#071a36; }
+.impact .stat .lbl{ color:#6b7f94; }
+.impact .stat + .stat{ border-left:1px solid #e3eaf2; }
+.impact .impact-note{ color:#6b7f94; }
+@media (prefers-color-scheme: dark){ .impact{ background:#0e1c2c; } .impact .stat .num{ color:#fff; } .impact .stat + .stat{ border-left-color:#22384f; } }
+.exp-num{ font-size:11px; font-weight:800; letter-spacing:1.6px; color:#b38324; margin-bottom:5px; }
+.about-grid .chips{ margin-top:22px; }
+#contact{ background:linear-gradient(120deg,#071a36,#0c2e55); }
+#contact .panel.dark{ background:rgba(255,255,255,.045); border-color:rgba(232,185,79,.4); }
+footer{ background:#051329; border-top:1px solid rgba(232,185,79,.25); color:#93a5bb; }
+footer strong{ color:#fff; }
+.foot-mh{ font-family:"Source Serif 4",Georgia,serif; color:#e8b94f; font-weight:700; letter-spacing:-1px; margin-right:10px; font-size:17px; }
+</style>
+</head>
   <body>
 
     <nav class="topnav" aria-label="Page sections">
       <div class="wrap">
-        <a class="who" href="#top">Md Mahadi Hasan <span>·</span> T&amp;D</a>
+        <a class="who" href="#top"><span class="monogram">MH</span><span class="who-text">Md Mahadi Hasan<small>Training &amp; Development</small></span></a>
         <div class="navlinks">
           <a href="#about">About</a>
           <a href="#ai-tools">AI Tools</a>
@@ -437,6 +477,7 @@
             <p>Before Shanta Life, I worked with <strong>MILVIK Bangladesh, OPPO Bangladesh, and VIVO Bangladesh</strong> — recruiting and training field and telesales teams, running leadership and soft-skills programs, and coaching low performers through structured improvement plans.</p>
             <p>What sets my work apart is how I combine training with technology. I’ve built <strong>AI-powered tools</strong> — an LMS module, a Lead Management System, Premium and Tax Calculators, and a real-time Sales &amp; Training Dashboard — to make learning and sales tracking simpler and more effective.</p>
             <p>I hold a <strong>BBA in Human Resource Management from City University</strong>, and I’m passionate about building capable, confident sales teams through practical training and data-driven coaching.</p>
+            <div class="chips"><span class="chip">Facilitation</span><span class="chip">Need-Based Selling</span><span class="chip">Leadership Development</span><span class="chip">Field Coaching</span><span class="chip">Training Strategy</span></div>
           </div>
           <aside class="facts" aria-label="At a glance">
             <h3>At a glance</h3>
@@ -606,16 +647,16 @@
           <p>The core of my work — from a new agent’s first day to a leader’s coaching plan.</p>
         </div>
         <div class="exp-grid reveal">
-          <div class="exp-item"><h3>Training Needs Analysis (TNA)</h3><p>Identifying skill and performance gaps across sales, service and back-office teams before designing training.</p></div>
-          <div class="exp-item"><h3>Onboarding &amp; Induction</h3><p>Structured first-week programs that get new agents and leaders productive fast.</p></div>
-          <div class="exp-item"><h3>Product &amp; Refresher Training</h3><p>Product, refresher, and on-the-job training for agency and bancassurance channels, including new product launches.</p></div>
-          <div class="exp-item"><h3>Training Design &amp; Content Development</h3><p>Instructional design, curriculum and module development, sales scripts, and SOP development for consistent delivery.</p></div>
-          <div class="exp-item"><h3>Digital Learning &amp; LMS</h3><p>E-learning content, microlearning, gamified learning and blended programs through the Learning Hub LMS.</p></div>
-          <div class="exp-item"><h3>Facilitation &amp; Train the Trainer</h3><p>Engaging classroom and virtual facilitation, role-play and simulation-based practice, and building internal trainers.</p></div>
-          <div class="exp-item"><h3>Leadership &amp; Soft Skills Development</h3><p>Leadership development and soft-skills programs for team leaders and supervisors.</p></div>
-          <div class="exp-item"><h3>Coaching, Mentoring &amp; PIP</h3><p>One-to-one coaching, mentoring programs, and structured Performance Improvement Plans that lift low performers.</p></div>
-          <div class="exp-item"><h3>Training Evaluation &amp; ROI</h3><p>Pre and post training assessments, effectiveness measurement, training MIS and dashboard reporting that show business impact.</p></div>
-          <div class="exp-item"><h3>Sales Enablement &amp; Field Coaching</h3><p>Field coaching, market and competitor insight, and data-driven routines that help sales teams convert more, consistently.</p></div>
+          <div class="exp-item"><div class="exp-num">01</div><h3>Training Needs Analysis (TNA)</h3><p>Identifying skill and performance gaps across sales, service and back-office teams before designing training.</p></div>
+          <div class="exp-item"><div class="exp-num">02</div><h3>Onboarding &amp; Induction</h3><p>Structured first-week programs that get new agents and leaders productive fast.</p></div>
+          <div class="exp-item"><div class="exp-num">03</div><h3>Product &amp; Refresher Training</h3><p>Product, refresher, and on-the-job training for agency and bancassurance channels, including new product launches.</p></div>
+          <div class="exp-item"><div class="exp-num">04</div><h3>Training Design &amp; Content Development</h3><p>Instructional design, curriculum and module development, sales scripts, and SOP development for consistent delivery.</p></div>
+          <div class="exp-item"><div class="exp-num">05</div><h3>Digital Learning &amp; LMS</h3><p>E-learning content, microlearning, gamified learning and blended programs through the Learning Hub LMS.</p></div>
+          <div class="exp-item"><div class="exp-num">06</div><h3>Facilitation &amp; Train the Trainer</h3><p>Engaging classroom and virtual facilitation, role-play and simulation-based practice, and building internal trainers.</p></div>
+          <div class="exp-item"><div class="exp-num">07</div><h3>Leadership &amp; Soft Skills Development</h3><p>Leadership development and soft-skills programs for team leaders and supervisors.</p></div>
+          <div class="exp-item"><div class="exp-num">08</div><h3>Coaching, Mentoring &amp; PIP</h3><p>One-to-one coaching, mentoring programs, and structured Performance Improvement Plans that lift low performers.</p></div>
+          <div class="exp-item"><div class="exp-num">09</div><h3>Training Evaluation &amp; ROI</h3><p>Pre and post training assessments, effectiveness measurement, training MIS and dashboard reporting that show business impact.</p></div>
+          <div class="exp-item"><div class="exp-num">10</div><h3>Sales Enablement &amp; Field Coaching</h3><p>Field coaching, market and competitor insight, and data-driven routines that help sales teams convert more, consistently.</p></div>
         </div>
       </div>
     </section>
@@ -925,7 +966,7 @@
 
     <footer>
       <div class="wrap">
-        <span><strong>Md Mahadi Hasan</strong> — Assistant Manager, Training &amp; Development</span>
+        <span><span class="foot-mh">MH</span><strong>Md Mahadi Hasan</strong> — Assistant Manager, Training &amp; Development</span>
         <span>Shanta Life Insurance PLC · Dhaka, Bangladesh</span>
       </div>
     </footer>
