@@ -419,6 +419,36 @@ footer strong{ color:#fff; }
 .closing-cta a{ display:inline-flex; align-items:center; gap:9px; background:#e8b94f; color:#10213a; font-weight:700; font-size:15px; text-decoration:none; padding:13px 22px; border-radius:10px; }
 .closing-cta a:hover{ background:#f6d98e; }
 .closing-cta a svg{ width:17px; height:17px; flex:none; }
+/* email chooser popover (hero) */
+.email-pop-wrap{ position:relative; display:inline-block; }
+button.social-link{ font:inherit; cursor:pointer; appearance:none; }
+button.social-link .email-chevron{ width:13px; height:13px; transition:transform .15s ease; }
+button.social-link[aria-expanded="true"] .email-chevron{ transform:rotate(180deg); }
+.email-popover{
+  position:absolute; top:calc(100% + 10px); left:0; z-index:80;
+  width:min(330px, calc(100vw - 44px));
+  background:#ffffff; color:#14232e;
+  border:1px solid #dde5ee; border-radius:14px;
+  box-shadow:0 24px 48px -16px rgba(3,16,34,.45);
+  padding:8px; text-align:left;
+}
+.email-popover[hidden]{ display:none; }
+.email-pop-item{
+  display:flex; flex-direction:column; gap:1px;
+  padding:11px 13px; border-radius:9px;
+  text-decoration:none; color:#14232e;
+}
+.email-pop-item:hover, .email-pop-item:focus-visible{ background:#f4f7fb; outline:none; }
+.email-pop-item + .email-pop-item{ border-top:1px solid #eef2f7; }
+.email-pop-item .addr-label{ font-size:11px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:#b38324; }
+.email-pop-item .addr-value{ font-size:14.5px; font-weight:700; line-height:1.4; overflow-wrap:anywhere; }
+.email-pop-item .addr-note{ font-size:12.5px; color:#6b7f94; line-height:1.4; }
+/* contact panel: stacked email addresses + whatsapp */
+.contact-emails{ display:grid; gap:9px; margin-top:2px; }
+.contact-emails a{ display:block; line-height:1.45; }
+.contact-emails .addr-tag{ display:block; font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#e8b94f; }
+.contact-row .wa-icon{ color:#25d366; }
+@media (prefers-color-scheme: dark){ .contact-row .wa-icon{ color:#25d366; } }
 </style>
 </head>
   <body>
@@ -466,6 +496,25 @@ footer strong{ color:#fff; }
               <svg class="social-facebook" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               Facebook
             </a>
+            <span class="email-pop-wrap">
+              <button type="button" class="social-link" id="email-toggle" aria-expanded="false" aria-controls="email-popover" aria-haspopup="true" aria-label="Email — show both email addresses">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+                <svg class="email-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <span class="email-popover" id="email-popover" role="group" aria-label="Choose an email address" hidden>
+                <a class="email-pop-item" href="mailto:mahadi.hasan@shantalife.com">
+                  <span class="addr-label">Official · Shanta Life</span>
+                  <span class="addr-value">mahadi.hasan@shantalife.com</span>
+                  <span class="addr-note">For work and training enquiries</span>
+                </a>
+                <a class="email-pop-item" href="mailto:mr.mriduul@gmail.com">
+                  <span class="addr-label">Personal</span>
+                  <span class="addr-value">mr.mriduul@gmail.com</span>
+                  <span class="addr-note">For everything else</span>
+                </a>
+              </span>
+            </span>
           </div>
           <div class="hero-meta">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> East Nakhalpara, Tejgaon, Dhaka</span>
@@ -1060,11 +1109,15 @@ footer strong{ color:#fff; }
             <div class="contact-rows">
               <div class="contact-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <div><span class="k">Email</span><a href="mailto:tnd.mriduul@gmail.com">tnd.mriduul@gmail.com</a></div>
+                <div><span class="k">Email</span><span class="contact-emails"><a href="mailto:mahadi.hasan@shantalife.com"><span class="addr-tag">Official · Shanta Life</span>mahadi.hasan@shantalife.com</a><a href="mailto:mr.mriduul@gmail.com"><span class="addr-tag">Personal</span>mr.mriduul@gmail.com</a></span></div>
               </div>
               <div class="contact-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 <div><span class="k">Phone</span><a href="tel:+8801645754748">+880 1645-754748</a></div>
+              </div>
+              <div class="contact-row">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                <div><span class="k">WhatsApp</span><a href="https://wa.me/8801645754748" target="_blank" rel="noopener noreferrer" aria-label="Chat with Md Mahadi Hasan on WhatsApp (opens in a new tab)">+880 1645-754748</a></div>
               </div>
               <div class="contact-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1146,6 +1199,40 @@ footer strong{ color:#fff; }
           });
         }, { threshold: 0.4 });
         counters.forEach(function (el) { cio.observe(el); });
+      })();
+    </script>
+    <script>
+      (function () {
+        var toggle = document.getElementById("email-toggle");
+        var popover = document.getElementById("email-popover");
+        if (!toggle || !popover) return;
+
+        function setOpen(open) {
+          popover.hidden = !open;
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+        function isOpen() { return !popover.hidden; }
+
+        toggle.addEventListener("click", function (event) {
+          event.stopPropagation();
+          setOpen(!isOpen());
+        });
+
+        popover.addEventListener("click", function (event) {
+          event.stopPropagation();
+          if (event.target.closest("a")) setOpen(false);
+        });
+
+        document.addEventListener("click", function (event) {
+          if (isOpen() && !event.target.closest(".email-pop-wrap")) setOpen(false);
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && isOpen()) {
+            setOpen(false);
+            toggle.focus();
+          }
+        });
       })();
     </script>
   </body>
